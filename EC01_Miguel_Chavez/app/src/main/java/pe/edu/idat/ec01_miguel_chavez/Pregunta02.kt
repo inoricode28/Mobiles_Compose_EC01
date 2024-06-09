@@ -111,7 +111,7 @@ fun calcularPromedio(nota1: Int, nota2: Int, nota3: Int, nota4: Int): String {
 
     // Calcular el promedio con las tres notas restantes
     val promedio = (notasFiltradas[0] * 0.2) + (notasFiltradas[1] * 0.3) + (notasFiltradas[2] * 0.5)
-    val resultado = if (promedio > 12.5) "APROBADO" else "DESAPROBADO"
+    val resultado = if (promedio > 12.5) "APROBADO" else "DESAPROBADO" //Esto Lo agrege para que haya un Orden Profe XD
 
     return "Su promedio es %.2f su estado es $resultado".format(promedio)
 }
