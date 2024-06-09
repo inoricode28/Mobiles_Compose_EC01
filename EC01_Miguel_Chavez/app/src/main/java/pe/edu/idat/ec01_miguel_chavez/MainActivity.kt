@@ -23,10 +23,12 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             NavHost(navController = navController, startDestination = "menu") {
                 composable("menu") { MenuScreen(navController) }
-                //Cobro_Estacion
+
                 composable("Estacion") { CobroEstacionScreen() }
                 composable("promedio") { PromedioScreen() }
                 composable("ValidarDNI") { ValidarDNIScreen() }
+                composable("NumerosPares") { Numero_ParesScreen() }
+
                 // Agrega aquí las demás pantallas según sea necesario
             }
 
