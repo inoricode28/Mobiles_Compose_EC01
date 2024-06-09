@@ -76,7 +76,7 @@ fun MenuScreen(navController: NavController) {
             MySpace(16)
             Button(
                 onClick = {
-                    // Navega a otra pantalla
+                    navController.navigate("ValidarDNI")
                 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF83B1EF),

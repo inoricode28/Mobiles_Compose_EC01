@@ -26,6 +26,7 @@ class MainActivity : ComponentActivity() {
                 //Cobro_Estacion
                 composable("Estacion") { CobroEstacionScreen() }
                 composable("promedio") { PromedioScreen() }
+                composable("ValidarDNI") { ValidarDNIScreen() }
                 // Agrega aquí las demás pantallas según sea necesario
             }
 
