@@ -103,11 +103,15 @@ fun PromedioScreen(){
     }
 }
 
-fun calcularPromedio(ec1: Int, ec2: Int, ec3: Int, ef:Int): String{
-    var promedio = (ec1 * 0.04) + (ec2 * 0.12) + (ec3 * 0.24) + (ef * 0.6)
-    var resultado = "DESAPROBADO"
-    if(promedio > 12.5){
-        resultado = "APROBADO"
-    }
-    return "Su promedio es $promedio su estado es $resultado"
+fun calcularPromedio(nota1: Int, nota2: Int, nota3: Int, nota4: Int): String {
+    // Crear una lista con las notas
+    val notas = listOf(nota1, nota2, nota3, nota4)
+    // Ordenar las notas y eliminar la más baja
+    val notasFiltradas = notas.sorted().drop(1)
+
+    // Calcular el promedio con las tres notas restantes
+    val promedio = (notasFiltradas[0] * 0.2) + (notasFiltradas[1] * 0.3) + (notasFiltradas[2] * 0.5)
+    val resultado = if (promedio > 12.5) "APROBADO" else "DESAPROBADO"
+
+    return "Su promedio es %.2f su estado es $resultado".format(promedio)
 }
