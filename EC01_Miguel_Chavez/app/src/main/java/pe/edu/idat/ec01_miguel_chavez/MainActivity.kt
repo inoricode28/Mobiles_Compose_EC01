@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import pe.edu.idat.ec01_miguel_chavez.ui.theme.EC01_Miguel_ChavezTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +23,8 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             NavHost(navController = navController, startDestination = "menu") {
                 composable("menu") { MenuScreen(navController) }
+                //Cobro_Estacion
+                composable("Estacion") { CobroEstacionScreen() }
                 composable("promedio") { PromedioScreen() }
                 // Agrega aquí las demás pantallas según sea necesario
             }

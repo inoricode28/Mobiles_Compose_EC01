@@ -23,77 +23,91 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+
 @Composable
-fun CobroEstacionScreen(){
+fun PromedioScreen(){
     Box(modifier = Modifier
         .fillMaxSize()
         .padding(top = 25.dp)){
 
-        var Horas by rememberSaveable {
+        var ec1 by rememberSaveable {
             mutableStateOf("")
         }
-        var Minutos by rememberSaveable {
+        var ec2 by rememberSaveable {
             mutableStateOf("")
         }
-
+        var ec3 by rememberSaveable {
+            mutableStateOf("")
+        }
+        var ef by rememberSaveable {
+            mutableStateOf("")
+        }
         var resultado by rememberSaveable {
             mutableStateOf("")
         }
 
         Column {
-            Text(text = "ESTACIONAMIENTO SOL DEL SUR",
+            Text(text = "PROMEDIO DE NOTAS IDAT",
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth(),
                 style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 30.sp)
             )
             MySpace(16)
-            OutlinedTextField(value = Horas,
-                onValueChange = { Horas = it },
+            OutlinedTextField(value = ec1,
+                onValueChange = { ec1 = it },
                 modifier = Modifier.fillMaxWidth(),
-                label = { Text(text ="HORAS") },
+                label = {Text(text ="Ingrese EC 1")},
                 maxLines = 1,
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
             MySpace(16)
-            OutlinedTextField(value = Minutos,
-                onValueChange = { Minutos = it },
+            OutlinedTextField(value = ec2,
+                onValueChange = { ec2 = it },
                 modifier = Modifier.fillMaxWidth(),
-                label = { Text(text ="MINUTOS") },
+                label = {Text(text ="Ingrese EC 2")},
                 maxLines = 1,
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
-
+            MySpace(16)
+            OutlinedTextField(value = ec3,
+                onValueChange = { ec3 = it },
+                modifier = Modifier.fillMaxWidth(),
+                label = {Text(text ="Ingrese EC 3")},
+                maxLines = 1,
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            )
+            MySpace(16)
+            OutlinedTextField(value = ef,
+                onValueChange = { ef = it },
+                modifier = Modifier.fillMaxWidth(),
+                label = {Text(text ="Ingrese EF")},
+                maxLines = 1,
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            )
             MySpace(16)
             Button(onClick = {
-                resultado = calcularCostoEstacionamiento(Horas.toInt(),
-                    Minutos.toInt())
+                resultado = calcularPromedio(ec1.toInt(),
+                    ec2.toInt(), ec3.toInt(), ef.toInt())
             },
                 modifier = Modifier.fillMaxWidth()) {
                 Text(text = "CALCULAR")
             }
             MySpace(espacio = 16)
             Text(text = resultado,
-                style = TextStyle(fontWeight = FontWeight.Bold, color = Color.DarkGray)
-            )
+                style = TextStyle(fontWeight = FontWeight.Bold, color = Color.DarkGray))
         }
     }
 }
 
-
-fun calcularCostoEstacionamiento(horas: Int, minutos: Int): String {
-    // Precio por hora o fracción
-    val precioPorHora = 1500
-
-    // Calculamos el total de horas incluyendo fracciones de hora
-    // Si hay algún minuto, se cuenta como una hora adicional
-    val totalHoras = if (minutos > 0) horas + 1 else horas
-
-    // Calculamos el costo total
-    val costoTotal = totalHoras * precioPorHora
-
-    // Devolvemos el resultado formateado
-    return "El costo del estacionamiento es Dolares $costoTotal"
+fun calcularPromedio(ec1: Int, ec2: Int, ec3: Int, ef:Int): String{
+    var promedio = (ec1 * 0.04) + (ec2 * 0.12) + (ec3 * 0.24) + (ef * 0.6)
+    var resultado = "DESAPROBADO"
+    if(promedio > 12.5){
+        resultado = "APROBADO"
+    }
+    return "Su promedio es $promedio su estado es $resultado"
 }
-

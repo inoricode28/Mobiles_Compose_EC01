@@ -36,7 +36,7 @@ fun MenuScreen(navController: NavController) {
             MySpace(16)
             Button(
                 onClick = {
-                    navController.navigate("promedio")
+                    navController.navigate("Estacion")
                 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF83B1EF),
@@ -56,7 +56,7 @@ fun MenuScreen(navController: NavController) {
             MySpace(16)
             Button(
                 onClick = {
-                    // Navega a otra pantalla
+                    navController.navigate("promedio")
                 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF83B1EF),
@@ -66,7 +66,12 @@ fun MenuScreen(navController: NavController) {
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp) // Padding horizontal para el botón
             ) {
-                Text(text = "OPCIÓN 2")
+                Text(text = "PROMEDIO NOTAS",
+                    style = TextStyle(
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Normal
+                    )
+                )
             }
             MySpace(16)
             Button(
@@ -81,7 +86,12 @@ fun MenuScreen(navController: NavController) {
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp) // Padding horizontal para el botón
             ) {
-                Text(text = "OPCIÓN 3")
+                Text(text = "SACAR DNI",
+                    style = TextStyle(
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Normal
+                    )
+                )
             }
             MySpace(16)
             Button(
@@ -96,7 +106,11 @@ fun MenuScreen(navController: NavController) {
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp) // Padding horizontal para el botón
             ) {
-                Text(text = "OPCIÓN 4")
+                Text(text = "MOSTRAR PARES",
+                    style = TextStyle(
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Normal)
+                )
             }
         }
     }
