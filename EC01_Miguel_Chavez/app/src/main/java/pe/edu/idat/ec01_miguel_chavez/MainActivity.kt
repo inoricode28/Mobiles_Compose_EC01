@@ -4,13 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+
+import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import pe.edu.idat.ec01_miguel_chavez.ui.theme.EC01_Miguel_ChavezTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,30 +20,19 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            EC01_Miguel_ChavezTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+            val navController = rememberNavController()
+            NavHost(navController = navController, startDestination = "menu") {
+                composable("menu") { MenuScreen(navController) }
+                composable("promedio") { PromedioScreen() }
+                // Agrega aquí las demás pantallas según sea necesario
             }
+
+
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    EC01_Miguel_ChavezTheme {
-        Greeting("Android")
-    }
+fun MySpace(espacio: Int){
+    Spacer(modifier = Modifier.size(espacio.dp))
 }
